@@ -104,6 +104,7 @@ export default function App() {
       <footer className="footer">
         <div className="container">
           <p>© {new Date().getFullYear()} Atisbe — Academia de idiomas • contacto: <a href="mailto:info@atisbe.com">info@atisbe.com</a></p>
+          <p className="small-note">Última actualización: 20 de octubre de 2025</p>
         </div>
       </footer>
     </div>
