@@ -1,25 +1,5 @@
-# Node
 node_modules/
-/frontend/node_modules/
-
-# Build output
-/frontend/dist/
-
-# Env
+dist/
 .env
-
-# Composer, logs, OS files
-*.log
-.DS_Store
 .vscode/
-
-# Archives
-*.zip
-
-# Do not commit DB credentials
-/backend/db_config.php
-
-# Lockfiles
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+.DS_Store
