@@ -25,7 +25,7 @@ jobs:
         working-directory: frontend
         run: npm run build
 
-      - name: Upload frontend and backend via FTP
+      - name: Upload frontend to public_html via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.4.0
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -34,11 +34,10 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: frontend/dist
-          server-dir: /
-          # exclude files if needed
+          server-dir: /public_html
           git-ftp-args: --insecure
 
-      - name: Upload backend via FTP
+      - name: Upload backend to public_html/backend via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.4.0
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -47,5 +46,17 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: backend
-          server-dir: backend
+          server-dir: /public_html/backend
+          git-ftp-args: --insecure
+
+      - name: Upload root .htaccess via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.4.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: deploy_root
+          server-dir: /public_html
           git-ftp-args: --insecure
