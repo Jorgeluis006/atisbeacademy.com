@@ -88,6 +88,24 @@ Luego abre la URL que te muestra Vite (por defecto `http://localhost:5173`). Si 
 Proxy rápido en Vite (opcional):
  - En `frontend/package.json` puedes agregar una configuración de proxy usando `vite.config.js`. Si quieres que lo haga por ti, dime y lo agrego.
 
+Crear la base de datos en Hostinger (paso a paso)
+
+1. Accede al panel de Hostinger y entra en "Bases de datos MySQL".
+2. Crea una nueva base de datos y un usuario asociado. Anota:
+   - Nombre de la base de datos
+   - Usuario de la base de datos
+   - Contraseña
+   - Host (normalmente `localhost` en Hostinger, pero revisa el panel)
+3. Abre phpMyAdmin desde el panel y selecciona la base de datos recién creada.
+4. Importa el archivo `sql/schema.sql` (en el repo) para crear la tabla `messages`.
+5. En el Administrador de Archivos o mediante FTP, crea `backend/db_config.php` a partir de `backend/db_config.example.php` y rellena los valores con los que creaste.
+
+Probar la conexión desde el navegador o Postman
+
+- Si ya tienes `backend/db_config.php` con las credenciales correctas, sube el archivo `backend/test_db.php` (ya incluido) o accede a: `https://tu-dominio.com/backend/test_db.php`.
+- Esto devolverá JSON con el estado de la conexión y las tablas en la base de datos.
+
+
 Siguientes sugerencias (opcionales):
 - Añadir protección anti-spam (reCAPTCHA)
 - Añadir envío de correo al administrador con `mail()` o integrando un servicio como SendGrid
